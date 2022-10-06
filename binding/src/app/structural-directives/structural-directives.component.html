@@ -1,0 +1,75 @@
+<p>structural-directives works!</p>
+
+<!-- <h2 *ngIf = "true">
+    codevolution
+</h2> -->
+
+<!-- ngIg -->
+<!-- <div *ngIf ="display; then thenBlock; else elseBlock" >
+
+</div>
+
+<ng-template #thenBlock>
+    <h2>codevolution</h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2>hidden</h2>
+</ng-template> -->
+
+<!-- ngswitch -->
+<!-- <div [ngSwitch] = "color">
+    <div *ngSwitchCase = "'red'">You picked red color</div>
+    <div *ngSwitchCase = "'green'">You picked green color</div>
+    <div *ngSwitchCase = "'blue'">You picked blue color</div>
+    <div *ngSwitchDefault>Pick again</div>
+</div> -->
+
+<!-- ngFor directive -->
+<!-- <div *ngFor = "let color of colors;index as i">
+    <h2>{{i}} {{color}}</h2> -->
+    <!-- <div *ngFor = "let color of colors;first as f">
+        <h2>{{f}} {{color}}</h2> -->
+        <!-- <div *ngFor = "let color of colors;last as l">
+            <h2>{{l}} {{color}}</h2> -->
+            <!-- <div *ngFor = "let color of colors;odd as o">
+                <h2>{{o}} {{color}}</h2> -->
+                <!-- <div *ngFor = "let color of colors;even as e">
+                    <h2>{{e}} {{color}}</h2>
+</div> -->
+
+<!-- parent to child data passing -->
+<h2>
+    {{"hello " + name}}
+</h2>
+
+<button (click)=" fireEvent()">click</button>
+
+<!-- pipes -->
+<h2>{{"Nagaveni"}}</h2>
+<!-- lowercase pipe  -->
+<h2>{{"Nagaveni" | lowercase }}</h2>
+<!-- uppercase pipe  -->
+<h2>{{"Nagaveni" | uppercase}}</h2>
+<!-- titlecase pipe  -->
+<h2>{{"Nagaveni gopal naik" | titlecase}}</h2>
+<!-- slice pipe slice:starting index : exclude ending index -->
+<h2> {{"Nagaveni" | slice : 3 : 6}}</h2>
+<!-- json pipe  -->
+<h2>{{person | json}}</h2>
+<!-- number pipe  number:'integer value.decimal minimum value-maximum range value'-->
+<h2>{{5.6789 | number:'2.2-3'}}</h2>
+<!-- percent pipe  -->
+<h2>{{0.34 | percent}}</h2>
+<!-- currency pipe  currency:cuntry code-->
+<h2>{{23 | currency : 'GBP'}}</h2>
+<h2>{{23 | currency : 'GBP' : 'code'}}</h2>
+<!-- date pipe  -->
+<h2>{{date}}</h2>
+<!-- Thu Sep 29 2022 12:19:47 GMT+0530 (India Standard Time) -->
+<h2>{{date |date : 'short'}}</h2>
+<!-- 9/29/22, 12:19 PM -->
+<h2>{{date |date : 'shortDate'}}</h2>
+<!-- 9/29/22 -->
+<h2>{{date |date : 'shortTime'}}</h2> 
+<!-- 12:18 PM -->
