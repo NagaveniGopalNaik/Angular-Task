@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
     <p>
       employees works!
     </p>
-    <ul style="list-style:none" *ngFor = "let employee of employees">
-    <li (click)="onSelect(employee)">{{employee.name}}</li>
+    <ul style="list-style:none" *ngFor = "let employee of employees" >
+    <li (click)="onSelect(employee)" [class.select]="isSelected(employee)">{{employee.name}}</li>
     </ul>
   `,
   styles: [
@@ -16,6 +16,10 @@ import { Router } from '@angular/router';
       border:1px solid black;
       padding : 2px;
       width : 20%;
+    }
+    .select{
+      color:white;
+      background-color:black;
     }`
   ]
 })
@@ -30,13 +34,34 @@ export class EmployeesComponent implements OnInit {
     {"id":7,"name": "Jane", "age":34},
     {"id":8,"name": "Doe", "age":67},
   ];
-  constructor(private router:Router) { }
+  public activeId:any;
+  constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params:ParamMap)=>{
+      let id = params.get('id');
+      this.activeId= parseInt('id');
+      console.log(typeof(this.activeId));
+      
+    })
   }
 
   onSelect(employee:any){
     this.router.navigate(['/employees', employee.id]);
+  }
+
+  // isSelected(employee:any){
+  //   return employee.id === this.selectId;
+  //   // console.log(this.selectId ===employee.id);
+    
+  // }
+
+  isSelected(employee:any){
+    console.log("e"+employee.id);
+    
+    // return employee.id === this.activeId;
+    console.log(employee.id === this.activeId);
+    
   }
 
 }

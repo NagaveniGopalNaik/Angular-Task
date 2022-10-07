@@ -10,11 +10,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GreetComponent } from './public/greet/greet.component';
 import { InfoComponent } from './public/info/info.component';
 import { PublicComponent } from './public/public.component';
-
+import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
+import { DepartmentComponentComponent } from './department-component/department-component.component';
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   {path : '',redirectTo:'/department',pathMatch:'full'},
-  {path : 'department',component: DepartmentListComponent},
-  {path : 'department/:id',component:DepartmentDetailsComponent},
+  {path : 'department',
+  component: DepartmentListComponent,
+  canActivate:[AuthGuard]
+  },
+  {path : 'department/:id',component:DepartmentDetailsComponent,
+children:[
+  {path:'overview',component:DepartmentOverviewComponent},
+  {path:'contact',component:DepartmentComponentComponent}
+]},
   {path : 'employees',component: EmployeeListComponent},
   {path : 'auth' , component: AuthComponent,children:[
     {path:'login',component: LoginComponent},
@@ -34,4 +43,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [DepartmentListComponent, EmployeeListComponent,
-  PageNotFoundComponent,DepartmentDetailsComponent];
+  PageNotFoundComponent,DepartmentDetailsComponent,DepartmentComponentComponent,DepartmentOverviewComponent];
