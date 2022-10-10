@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
   }
 
   // apply HostListener to submit button
-  @HostListener('click') submit(){
+  @HostListener('submit') submit(){
     alert("Registration successfull");
   }
 
