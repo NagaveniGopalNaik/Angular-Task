@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class DepartmentsComponent implements OnInit {
     {"id":104,"name":"Angular 5"},
     {"id":105,"name":"Angular 6"}
   ]
-  constructor(private router: Router,private route:ActivatedRoute) { }
+  constructor(private router: Router,private route:ActivatedRoute, private element:ElementRef, private renderer:Renderer2) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -27,6 +27,18 @@ export class DepartmentsComponent implements OnInit {
   onSelect(department:any){
 
     this.router.navigate(['/departments',department.id]);
+    
+    
+  }
+
+  @HostListener('mousemove') onmouseenter(){
+    this.renderer.setStyle(this.element.nativeElement, 'color','red');
+    this.renderer.setStyle(this.element.nativeElement, 'border','2px solid red');
+  }
+
+  @HostListener('mouseout') onmouseout(){
+    this.renderer.setStyle(this.element.nativeElement, 'color','black');
+    this.renderer.setStyle(this.element.nativeElement, 'border','1px solid black');
     
     
   }
