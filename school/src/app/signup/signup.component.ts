@@ -28,6 +28,18 @@ export class SignupComponent implements OnInit {
   // apply HostListener to submit button
   @HostListener('submit') submit(){
     alert("Registration successfull");
-  }
+  };
 
+  // @HostListener('submit', ['$event'])
+  // onSubmit(event: Event) {
+  //   console.log('Form submitted!');
+  //   event.preventDefault();
+  // }
+
+
+
+  resetForm(forValue:NgForm){
+    // forValue.reset();
+    forValue.resetForm();
+  }
 }

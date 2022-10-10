@@ -3,7 +3,9 @@
     margin : 0;
     padding : 0;
 }
-
+.required{
+    color:red;
+}
 
 h2{
     text-align: center;

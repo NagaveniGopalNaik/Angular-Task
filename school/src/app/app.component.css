@@ -10,6 +10,7 @@
     position: sticky;
     top:0;
     padding: 1.5%;
+    z-index: 1;
 }
 #navbar h1{
     width: 40%;
