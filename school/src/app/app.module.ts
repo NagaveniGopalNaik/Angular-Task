@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 // import { DepartmentsComponent } from './departments/departments.component';
 // import { EmployeesComponent } from './employees/employees.component';
 // import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -15,12 +17,15 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     routingComponents,
-    SignupComponent
+    SignupComponent,
+    EmployeeFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

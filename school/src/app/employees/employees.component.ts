@@ -41,7 +41,7 @@ export class EmployeesComponent implements OnInit {
     this.route.paramMap.subscribe((params:ParamMap)=>{
       let id = params.get('id');
       this.activeId= parseInt('id');
-      console.log(typeof(this.activeId));
+      // console.log(typeof(this.activeId));
       
     })
   }
@@ -57,10 +57,10 @@ export class EmployeesComponent implements OnInit {
   // }
 
   isSelected(employee:any){
-    console.log("e"+employee.id);
+    // console.log("e"+employee.id);
     
-    // return employee.id === this.activeId;
-    console.log(employee.id === this.activeId);
+    return employee.id === this.activeId;
+    // console.log(employee.id === this.activeId);
     
   }
 

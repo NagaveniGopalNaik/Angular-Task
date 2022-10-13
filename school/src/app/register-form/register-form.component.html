@@ -1,0 +1,81 @@
+<div class = "container">
+    <form [formGroup] = "employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="firstName">First Name </label>
+            <input type="text" formControlName = "fname" id="firstName" name="firstName">
+            <small *ngIf="employeeForm.get('fname')?.hasError('pattern')&& employeeForm.get('fname')?.touched">first name only accept characters</small>
+            <small *ngIf="employeeForm.get('fname')?.invalid&& employeeForm.get('fname')?.touched">first name invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name </label>
+            <input type="text" formControlName = "lname" id="lastName" name="lastName">
+            <small *ngIf="employeeForm.get('lname')?.hasError('pattern')&& employeeForm.get('lname')?.touched">last name only accept characters</small>
+            <small *ngIf="employeeForm.get('lname')?.invalid&& employeeForm.get('lname')?.touched">last name invalid</small>
+        </div>
+        <div class="form-group" >
+            <label for="gender" >Gender</label>
+            <label for="male"><input type="radio" id="male" name="gender" formControlName="gender" value="male">Male</label>
+            <label for="female"><input type="radio" id="female" name="gender" formControlName="gender" value="female">Female</label>
+            <label for="other"><input type="radio" id="other" name="gender" formControlName="gender" value="other">Other</label>
+        </div>
+
+        <div class="form-group">
+            <label for="mail">Email </label>
+            <input type="email" formControlName = "email" id="mail" name="gender">
+            <small *ngIf="employeeForm.get('email')?.hasError('email')&& employeeForm.get('email')?.touched">Email invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="cont">contact </label>
+            <input type="text" formControlName = "contact" id="cont" name="cont">
+            <small *ngIf="employeeForm.get('contact')?.hasError('pattern')&& employeeForm.get('contact')?.touched">Contact only accept 10 digits</small>
+        </div>
+        <div class="form-group">
+            <label for="age">Age </label>
+            <input type="text" formControlName = "age" id="age" name="age">
+            <small *ngIf="isValid(employeeForm.get('age'))">senior citizens are not allow registration</small>
+            <!-- <small *ngIf="employeeForm.get('age')?.hasError('pattern')&& employeeForm.get('age')?.touched">please enter proper age</small> -->
+        </div>
+        <div class="form-group" forArrayName="experience">
+            <label for="experience">experience: </label>
+            <select name="experience" id="experience" formArrayName="experience" (change)="add($event.target['value'])">
+                <option value="fresher">Fresher</option>
+                <option value="experience" >Experienced</option>
+            </select>
+            <!-- <div *ngFor="let a of employeeForm.get('experience')?.experience.controls;let i=index">
+                <input type="text" id="{{a}}">
+            </div> -->
+            
+<!-- 
+            <div class="form-group" *ngIf = "employeeForm.get('experience')?.value === 'experience'">
+               
+            </div>
+             -->
+             <small *ngIf="dis">Add working details</small>
+             
+                <ng-container  *ngFor = "let e of employeeForm.get('experience')['controls'];index as i">
+                    <div [formGroup]="e">
+                    <!-- <label for="{{i}}">year of Experience<input type="text" formControlName="{{i}}"></label> -->
+                    <label for="">Company Name<input type="text" formControlName="companyName"></label>
+                    <label for="">Year of experience<input type="number" formControlName="experiences"></label>
+                    <label for="">Working Domain<input type="text" formControlName="workingDomain"></label>
+                    
+                    <button (click)="removeExperience('{{i}}')">Remove</button></div>
+                </ng-container>
+                <button (click)="addExperience()" *ngIf="dis" >+Add</button>
+                
+                <!-- <small *ngIf="dis">Add working details</small>
+                <ng-container *ngFor = "let e of employeeForm.get('experience')['controls'];index as i;[formGroupName]='experience'">
+                    
+                    <label for="">Company Name<input type="text" formControlName="companyName"></label>
+                    <label for="">Year of experience<input type="number" formControlName="experiences"></label>
+                    <label for="">Working Domain<input type="text" formControlName="workingDomain"></label>
+                    <button (click)="removeExperience('{{i}}')">Remove</button>
+                </ng-container>
+                <button (click)="addExperience()" *ngIf="dis" >+Add</button> -->
+            </div>
+         
+
+        <button type="submit">Submit</button>
+        <!-- <button type="clear" (click)="formReset()">Reset</button> -->
+    </form>
+</div>
