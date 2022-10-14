@@ -35,45 +35,31 @@
             <small *ngIf="isValid(employeeForm.get('age'))">senior citizens are not allow registration</small>
             <!-- <small *ngIf="employeeForm.get('age')?.hasError('pattern')&& employeeForm.get('age')?.touched">please enter proper age</small> -->
         </div>
-        <div class="form-group" forArrayName="experience">
+
+        <div class="form-group" formArrayName="experience" >
             <label for="experience">experience: </label>
-            <select name="experience" id="experience" formArrayName="experience" (change)="add($event.target['value'])">
+            <select id="experience" (change)="add($event.target['value'])">
                 <option value="fresher">Fresher</option>
                 <option value="experience" >Experienced</option>
             </select>
-            <!-- <div *ngFor="let a of employeeForm.get('experience')?.experience.controls;let i=index">
-                <input type="text" id="{{a}}">
-            </div> -->
-            
-<!-- 
-            <div class="form-group" *ngIf = "employeeForm.get('experience')?.value === 'experience'">
-               
-            </div>
-             -->
+           
              <small *ngIf="dis">Add working details</small>
              
                 
-                    <ng-container  *ngFor = "let e of employeeForm.get('experience')['controls'];index as i" [formGroupName]="i">
+                    <ng-container *ngFor = "let eform of employeeForm.get('experience')['controls'];index as i"
+                    [formGroupName]="i"><div >
+
                     
                         <!-- <label for="{{i}}">year of Experience<input type="text" formControlName="{{i}}"></label> -->
-                        <label for="companyName{{i}}">Company Name<input type="text" id="companyName{{i}}" formControlName="{{i}}" name="companyName"></label>
-                        <label for="experiences{{i}}">Year of experience<input type="number" id="experiences{{i}}" formControlName="{{i}}" name="experiences"></label>
-                        <label for="workingDomain{{i}}">Working Domain<input type="text" id="workingDomain{{i}}" formControlName="{{i}}" name="workingDomain"></label>
+                        <label for="companyName{{i}}">Company Name<input type="text" id="companyName{{i}}" formControlName = "companyName" name="companyName" ></label>
+                        <label for="experiences{{i}}">Year of experience<input type="number" id="experiences{{i}}" formControlName = "experiences" name="experiences"></label>
+                        <label for="workingDomain{{i}}">Working Domain<input type="text" id="workingDomain{{i}}" formControlName = "workingDomain" name="workingDomain"></label>
                         
                         <button (click)="removeExperience('{{i}}')">Remove</button>
-                    </ng-container>
-                <button (click)="addExperience()" *ngIf="dis" >+Add</button>
-                
-                <!-- <small *ngIf="dis">Add working details</small>
-                <ng-container *ngFor = "let e of employeeForm.get('experience')['controls'];index as i;[formGroupName]='experience'">
                     
-                    <label for="">Company Name<input type="text" formControlName="companyName"></label>
-                    <label for="">Year of experience<input type="number" formControlName="experiences"></label>
-                    <label for="">Working Domain<input type="text" formControlName="workingDomain"></label>
-                    <button (click)="removeExperience('{{i}}')">Remove</button>
-                </ng-container>
-                <button (click)="addExperience()" *ngIf="dis" >+Add</button> -->
-            </div>
+                     </div></ng-container>
+                <button (click)="addExperience()" *ngIf="dis">+Add</button>
+        </div>
          
 
         <button type="submit">Submit</button>

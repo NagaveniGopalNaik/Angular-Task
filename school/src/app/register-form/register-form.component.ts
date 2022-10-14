@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -12,48 +12,50 @@ public display = false
   // Create reactive form
   employeeForm: FormGroup;
   Gender:any=['male','female','other'];
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder) { 
+    
+  }
   
   ngOnInit(): void {
-
     this.employeeForm = this.fb.group({
-      'fname':new FormControl('',[
+      'fname':['',[
         Validators.pattern('^[a-zA-Z ]+$'),
         Validators.maxLength(50),
         Validators.required,
-      ]),
-      'lname':new FormControl('',[
+      ]],
+      'lname':['',[
         Validators.pattern('^[a-zA-Z ]+$'),
         Validators.maxLength(50),
         Validators.required,
-      ]),
-      'gender':new FormControl(''),
-      'email':new FormControl('',[
+      ]],
+      'gender':[''],
+      'email':['',[
         Validators.required,
         Validators.email,
         Validators.required
-      ]),
-      'contact':new FormControl('',[
+      ]],
+      'contact':['',[
         Validators.required,
         Validators.pattern('[0-9]{10}')
-      ]),
-      'age':new FormControl('',[Validators.pattern('[0-9]{2}')]),
-      'experience': this.fb.array([])
+      ]],
+      'age':['',[Validators.pattern('[0-9]{2}')]],
+      'experience': this.fb.array([]),
       
     });
+    
 
    
   }
 onSubmit(){
-  console.log(this.employeeForm.value);
+  console.log(this.employeeForm);
   
   
 }
 experienceDetails(){
   return this.fb.group({
-    'companyName':new FormControl(''),
-    'experiences':new FormControl(''),
-    'workingDomain':new FormControl('')
+    'companyName':[''],
+    'experiences':[''],
+    'workingDomain':[''],
   });
 }
 
@@ -71,6 +73,7 @@ formReset(){
   this.employeeForm.reset();
 }
 get employeeArray(){
+  
   return (<FormArray>this.employeeForm.get('experience'));
 }
 addExperience(){
@@ -81,9 +84,13 @@ addExperience(){
   // let arrLength : any= empArray.length;
   
   
-  console.log(this.employeeArray.value);
+  // console.log(this.employeeArray.value);
+  // console.log(this.employeeForm.get('experience')['controls']);
+  
   this.employeeArray.push(this.experienceDetails());
-  console.log(this.employeeForm);
+  // console.log(<FormArray>this.employeeForm.get('experience'));
+  
+  // console.log(this.employeeForm);
   
   
   this.dis=true;
