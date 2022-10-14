@@ -38,11 +38,7 @@ public display = false
         Validators.pattern('[0-9]{10}')
       ]),
       'age':new FormControl('',[Validators.pattern('[0-9]{2}')]),
-      'experience':this.fb.group({
-        'companyName':'',
-        'experiences':'',
-        'workingDomain':''
-      })
+      'experience': this.fb.array([])
       
     });
 
@@ -52,6 +48,13 @@ onSubmit(){
   console.log(this.employeeForm.value);
   
   
+}
+experienceDetails(){
+  return this.fb.group({
+    'companyName':new FormControl(''),
+    'experiences':new FormControl(''),
+    'workingDomain':new FormControl('')
+  });
 }
 
 isValid(age:any){
@@ -67,13 +70,20 @@ isValid(age:any){
 formReset(){
   this.employeeForm.reset();
 }
-
+get employeeArray(){
+  return (<FormArray>this.employeeForm.get('experience'));
+}
 addExperience(){
   // (<FormArray>this.employeeForm.get(['experience','companyName'])).push(new FormControl(null));
   // (<FormArray>this.employeeForm.get(['experience','experiences'])).push(new FormControl(null));
   // (<FormArray>this.employeeForm.get(['experience','workingDomain'])).push(new FormControl(null));
-  let empArray : any = (<FormArray>this.employeeForm.get('experience')) as FormArray;
-  let arrLength : any= empArray.length;
+  // let empArray : any = (<FormArray>this.employeeForm.get('experience')) as FormArray;
+  // let arrLength : any= empArray.length;
+  
+  
+  console.log(this.employeeArray.value);
+  this.employeeArray.push(this.experienceDetails());
+  console.log(this.employeeForm);
   
   
   this.dis=true;

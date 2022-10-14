@@ -52,15 +52,16 @@
              -->
              <small *ngIf="dis">Add working details</small>
              
-                <ng-container  *ngFor = "let e of employeeForm.get('experience')['controls'];index as i">
-                    <div [formGroup]="e">
-                    <!-- <label for="{{i}}">year of Experience<input type="text" formControlName="{{i}}"></label> -->
-                    <label for="">Company Name<input type="text" formControlName="companyName"></label>
-                    <label for="">Year of experience<input type="number" formControlName="experiences"></label>
-                    <label for="">Working Domain<input type="text" formControlName="workingDomain"></label>
+                
+                    <ng-container  *ngFor = "let e of employeeForm.get('experience')['controls'];index as i" [formGroupName]="i">
                     
-                    <button (click)="removeExperience('{{i}}')">Remove</button></div>
-                </ng-container>
+                        <!-- <label for="{{i}}">year of Experience<input type="text" formControlName="{{i}}"></label> -->
+                        <label for="companyName{{i}}">Company Name<input type="text" id="companyName{{i}}" formControlName="{{i}}" name="companyName"></label>
+                        <label for="experiences{{i}}">Year of experience<input type="number" id="experiences{{i}}" formControlName="{{i}}" name="experiences"></label>
+                        <label for="workingDomain{{i}}">Working Domain<input type="text" id="workingDomain{{i}}" formControlName="{{i}}" name="workingDomain"></label>
+                        
+                        <button (click)="removeExperience('{{i}}')">Remove</button>
+                    </ng-container>
                 <button (click)="addExperience()" *ngIf="dis" >+Add</button>
                 
                 <!-- <small *ngIf="dis">Add working details</small>
