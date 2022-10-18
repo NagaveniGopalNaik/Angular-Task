@@ -1,0 +1,11 @@
+<div>
+    <h2>Child Component</h2>
+<!-- {{name}} -->
+
+<ul *ngFor = "let value of data" style="list-style: none;">
+    <li>{{value.name}}</li>
+    <li (click) = "displayage(value.age)">{{value.age}}</li>
+</ul>
+
+<input type="text" [value]="text" (change)="updateText($event)">
+</div>
