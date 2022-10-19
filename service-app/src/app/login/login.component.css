@@ -1,0 +1,31 @@
+.body{
+    background-image: linear-gradient(45deg,rgb(154, 80, 223),rgb(250, 76, 131));
+    width: 100%;
+    height: 100%;
+}
+
+.login-card{
+    background-color: #fff;
+    width:20%;
+    margin: 10% 38%;
+    border-radius:2vw ;
+    padding: 0 2vh;
+    
+
+}
+.login-card h2{
+    text-align: center;
+}
+.login-button{
+    width:40%;
+    margin: 0 30% 3% 30%;
+    border-radius: 50px;
+    background-color: rgb(238, 38, 95);
+}
+.login-card mat-form-field{
+    display: block;
+}
+
+.password{
+    text-align: center;
+}
