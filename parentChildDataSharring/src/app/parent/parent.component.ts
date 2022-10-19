@@ -26,7 +26,7 @@ export class ParentComponent implements OnInit ,OnChanges {
   ngOnChanges(changes:SimpleChanges): void {
     console.log(changes);
     if(changes['age']&&changes['age'].currentValue){
-      this.age = this.age *3;
+      this.age = this.age-4;
       
     } else{
       this.age = 18;

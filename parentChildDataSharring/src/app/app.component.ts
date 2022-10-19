@@ -21,7 +21,7 @@ ngOnInit(): void {
 }
 
 ngAfterViewInit(): void {
-  // this.message1 = this.child.message;
+  this.message1 = this.child.message;
   // console.log(this.child.message)
 }
 displayAge(value:any){

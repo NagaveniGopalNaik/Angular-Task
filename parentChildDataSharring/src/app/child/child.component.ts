@@ -9,6 +9,7 @@ import { ServiceService } from '../service.service';
 export class ChildComponent implements OnInit,OnChanges {
 text="";
 editText = "";
+editText1="";
 value = 0;
 @Input() name: string = '';
 @Input() data:any;
@@ -28,6 +29,9 @@ message : string ="This is the message getting from the child component using vi
   
   editUser(){
     this.service.updateData(this.editText);
+  }
+  editUser1(){
+    this.service.updateData1(this.editText1);
   }
   ngOnChanges(change:SimpleChanges): void {
     console.log(change);

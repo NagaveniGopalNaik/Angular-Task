@@ -14,8 +14,11 @@ public share = this.content.asObservable();
   constructor() { }
   updateData(text:any){
     this.content.next(text);
-    this.message.next(text);
+    
 
+  }
+  updateData1(text:any){
+    this.message.next(text);
   }
 
   setMessage(data:any){
