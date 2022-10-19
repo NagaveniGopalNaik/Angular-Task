@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
   data :string="Gopal Naik";
-private content = new BehaviorSubject<string>("default value");
+  private message = new Subject<string>();
+  public msg = this.message.asObservable();
+private content = new BehaviorSubject<string>("Service");
 public share = this.content.asObservable();
 
   constructor() { }
   updateData(text:any){
     this.content.next(text);
+    this.message.next(text);
+
   }
 
   setMessage(data:any){

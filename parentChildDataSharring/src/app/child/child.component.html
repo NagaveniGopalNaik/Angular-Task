@@ -7,5 +7,10 @@
     <li (click) = "displayage(value.age)">{{value.age}}</li>
 </ul>
 
-<input type="text" [value]="text" (change)="updateText($event)">
+
+<!-- 
+<input type="text" [value]="text" (change)="updateText($event)"> -->
+<label for="">Enter your name : </label>
+<input type="text" [(ngModel)] = 'editText' (keyup)="editUser()">
+
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,Output,EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { ServiceService } from '../service.service';
 })
 export class ChildComponent implements OnInit,OnChanges {
 text="";
+editText = "";
+value = 0;
 @Input() name: string = '';
 @Input() data:any;
 message : string ="This is the message getting from the child component using view child method";
@@ -17,17 +19,21 @@ message : string ="This is the message getting from the child component using vi
   constructor( private service : ServiceService) { }
   
   ngOnInit(): void {
-    this.displayAge.emit(29)
+    
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+  
   displayage(value:any){
     this.displayAge.emit(value);
   }
   
-  updateText(text:any){
-    // debugger;
-    this.service.updateData(text);
+  editUser(){
+    this.service.updateData(this.editText);
   }
+  ngOnChanges(change:SimpleChanges): void {
+    console.log(change);
+    
+      console.log("value change");
+      
+    }
+    
 }
